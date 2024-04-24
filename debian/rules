@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+# export DH_VERBOSE=1
+export LC_ALL=C.UTF-8
+export DH_GOPKG := github.com/RocksLabs/kvrocks_exporter
+export GO111MODULE := on
+export GOPROXY := https://proxy.golang.org,direct
+# export DH_OPTIONS
+
+%:
+	dh $@ --builddirectory=_build --buildsystem=golang --with=golang
+
+override_dh_auto_install:
+	dh_auto_install -- --no-source
+
+override_dh_auto_test:
+
+override_dh_golang:

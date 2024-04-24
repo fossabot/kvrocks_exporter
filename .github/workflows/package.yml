@@ -1,0 +1,55 @@
+---
+name: Build deb package
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: [self-hosted]
+    container:
+      image: golang:bookworm
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: src
+
+      - name: build package
+        working-directory: ./src
+        run: |
+          apt-get update && apt-get install --yes --no-install-recommends devscripts equivs
+          mk-build-deps --install --tool='apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes' debian/control
+          dpkg-buildpackage -B --no-sign
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kvrocks-exporter_1.0.2-unreleased.zip
+          path: '*.deb'
+          if-no-files-found: error
+
+  publish:
+    runs-on: [self-hosted, regular]
+    needs: [build]
+    if: startsWith(github.ref_name, 'gcore-build/')
+    steps:
+      - name: Get Secrets
+        uses: hashicorp/vault-action@v2.7.3
+        id: secrets
+        with:
+          url: https://puppet-vault.gc.onl
+          token: ${{ secrets.VAULT_TOKEN }}
+          secrets: |
+            secret/responsible_cdn_ops/job-cdn-ops-upload-key private_key | key ;
+
+      - uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+
+      - name: send to repo
+        uses: appleboy/scp-action@master
+        with:
+          host: ed-v-gcrepos-1.fe.gc.onl
+          username: upload
+          key: ${{ steps.secrets.outputs.key }}
+          port: 2200
+          source: "*.deb"
+          target: /home/upload/nosign/gcdn_nosign/ubuntu_jammy/

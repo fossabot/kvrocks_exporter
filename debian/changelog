@@ -1,0 +1,11 @@
+kvrocks-exporter (1.0.2-unreleased) unstable; urgency=medium
+
+  * Bump github.com/prometheus/client_golang from 1.11.0 to 1.12.2 by @dependabot in #8
+  * Bump github.com/gomodule/redigo from 1.8.5 to 1.8.8 by @dependabot in #4
+  * feat: release action by @tufitko in #7
+  * Bump github.com/gomodule/redigo from 1.8.8 to 1.8.9 by @dependabot in #9
+  * Bump github.com/prometheus/client_golang from 1.12.2 to 1.13.0 by @dependabot in #11
+  * Bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0 by @dependabot in #10
+  * Bump github.com/prometheus/client_model from 0.2.0 to 0.3.0 by @dependabot in #12
+
+ -- hulk <hulk.website@gmail.com>  Wed, 15 Feb 2023 00:00:00 +0000

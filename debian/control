@@ -1,0 +1,20 @@
+Source: kvrocks-exporter
+Priority: optional
+Section: golang
+Maintainer: Ilya Baev <ilya.baev@gcore.com>
+Build-Depends: debhelper (>= 13),
+               dh-golang (>= 1.50)
+Standards-Version: 4.6.0
+# XS-Go-Import-Path: github.com/RocksLabs/kvrocks_exporter
+XS-Go-Import-Path: github.com/sheyt0/kvrocks_exporter
+Homepage: https://github.com/RocksLabs/kvrocks_exporter
+Vcs-Git: https://github.com/sheyt0/kvrocks_exporter.git
+Vcs-Browser: https://github.com/sheyt0/kvrocks_exporter
+Rules-Requires-Root: no
+
+Package: kvrocks-exporter
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Built-Using: ${misc:Built-Using}
+Description: Prometheus exporter for kvrocks metrics.
