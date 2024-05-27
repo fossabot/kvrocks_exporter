@@ -122,6 +122,7 @@ For Grafana 8.x, the default Prometheus data store access mode was `Server` whic
 the CORS issue, you can workaround this by choosing the `browser` mode or fix the CORS problem.
 
 ![image](https://user-images.githubusercontent.com/4987594/143570291-e4882b52-3a7a-4482-8bf1-ca6539a6b14c.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FG-Core%2Fkvrocks_exporter.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FG-Core%2Fkvrocks_exporter?ref=badge_shield)
 
 ## What it looks like
 Kvrocks Grafana dashboard template is available on [Grafana.com](https://grafana.com/grafana/dashboards/15286) and imports
@@ -134,3 +135,7 @@ Example Grafana screenshots:
 ## Communal effort
 
 Open an issue or PR if you have more suggestions, questions or ideas about what to add.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FG-Core%2Fkvrocks_exporter.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FG-Core%2Fkvrocks_exporter?ref=badge_large)
